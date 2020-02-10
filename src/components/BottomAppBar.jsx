@@ -1,11 +1,13 @@
 import React from 'react';
 
+// COMPONENTS
+import IconButton from './IconButton';
+import Typography from './Typography';
+
 // MATERIAL UI - CORE
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
-import IconButton from '@material-ui/core/IconButton';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 
 // MATERIAL UI - ICONS
 import SettingsSharpIcon from '@material-ui/icons/SettingsSharp';
@@ -34,28 +36,20 @@ const BottomAppBar = () => {
     <AppBar position='fixed' className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
         <div className={classes.icon}>
-          <IconButton color='inherit' size='small'>
-            <SettingsSharpIcon />
-          </IconButton>
-          <Typography variant='subtitle2'>Settings</Typography>
+          <IconButton icon={<SettingsSharpIcon />} />
+          <Typography variant='subtitle2' content='Settings' />
         </div>
         <div className={classes.icon}>
-          <IconButton color='inherit' size='small'>
-            <AccountBalanceWalletSharpIcon />
-          </IconButton>
-          <Typography variant='subtitle2'>Wallet</Typography>
+          <IconButton icon={<AccountBalanceWalletSharpIcon />} />
+          <Typography variant='subtitle2' content='Wallet' />
         </div>
         <div className={classes.icon}>
-          <IconButton color='inherit' size='small'>
-            <HomeSharpIcon />
-          </IconButton>
-          <Typography variant='subtitle2'>Home</Typography>
+          <IconButton icon={<HomeSharpIcon />} />
+          <Typography variant='subtitle2' content='Home' />
         </div>
         <div className={classes.icon}>
-          <IconButton color='inherit' size='small'>
-            <ExploreSharpIcon />
-          </IconButton>
-          <Typography variant='subtitle2'>Explorer</Typography>
+          <IconButton icon={<ExploreSharpIcon />} />
+          <Typography variant='subtitle2' content='Explorer' />
         </div>
       </Toolbar>
     </AppBar>
