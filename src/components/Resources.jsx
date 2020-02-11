@@ -11,6 +11,14 @@ import Typography from '@material-ui/core/Typography';
 const Resources = ({ userInfo }) => {
   // const classes = useStyles();
 
+  const {
+    core_liquid_balance,
+    cpu_limit,
+    net_limit,
+    ram_usage,
+    ram_quota
+  } = userInfo;
+
   // DISPLAY THIS DATA:
   // the EOS token balance √
   // the value in USD
@@ -19,9 +27,11 @@ const Resources = ({ userInfo }) => {
 
   return (
     <>
-      <Typography>EOS token balance: {userInfo.core_liquid_balance}</Typography>
-      <Typography>EOS token balance in USD: ?</Typography>
-      <Typography>RAM usage: {userInfo.ram_usage}</Typography>
+      <Typography>EOS token balance: {core_liquid_balance}</Typography>
+      {/* <Typography>NET consumption: {cpu_limit}</Typography> */}
+      {/* <Typography>NET consumption: {net_limit}</Typography> */}
+      <Typography>RAM usage: {ram_usage}</Typography>
+      <Typography>RAM quota: {ram_quota}</Typography>
     </>
   );
 };
