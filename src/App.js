@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 // COMPONENTS
 import Actions from './components/Actions';
 import Resources from './components/Resources';
+import Typography from './components/utils/Typography';
 
 // UTILS
 import BottomAppBar from './components/utils/BottomAppBar';
@@ -14,12 +15,16 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
   gridItem: {
     margin: theme.spacing(2)
+  },
+  heading: {
+    marginTop: theme.spacing(2)
   }
 }));
 
 const App = () => {
   const classes = useStyles();
   const [userInfo, setUserInfo] = useState([]);
+  const { account_name } = userInfo;
 
   const bodyData = {
     account_name: 'genialwombat'
@@ -45,7 +50,14 @@ const App = () => {
   console.log('USER INFO: ', userInfo);
 
   return (
-    <Grid container justify='center'>
+    <Grid container justify='center' align='center'>
+      <Grid item xs={12}>
+        <Typography
+          content={`Welcome, ${account_name}.`}
+          variant='h5'
+          className={classes.heading}
+        />
+      </Grid>
       <Grid item xs={12} className={classes.gridItem}>
         <Actions userInfo={userInfo} />
       </Grid>
