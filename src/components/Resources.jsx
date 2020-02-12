@@ -24,14 +24,22 @@ const useStyles = makeStyles(theme => ({
 
 const Resources = ({ userInfo }) => {
   const classes = useStyles();
-  const { cpu_limit, net_limit, ram_usage, ram_quota } = userInfo;
+  const {
+    cpu_limit,
+    net_limit,
+    total_resources,
+    ram_usage,
+    ram_quota
+  } = userInfo;
 
-  console.log('RAM USAGE: ', ram_usage);
-  console.log('RAM USAGE: ', ram_quota);
+  const calculatePercentage = (firstValue, secondValue) => {
+    let number = (firstValue / secondValue) * 100;
+    return Number(number.toFixed());
+  };
 
-  // DISPLAY THIS DATA:
-  // the staked resources for CPU and NET as well as the current consumption
-  // the RAM consumption √
+  // const decimalConverter = value => {
+  //   return Number(value.toFixed(2));
+  // };
 
   return (
     <Paper>
@@ -47,6 +55,8 @@ const Resources = ({ userInfo }) => {
         </Grid>
         <Grid item xs={12} className={classes.dataFeedback}>
           <DataFeedback
+            showStaked
+            stakedValue={total_resources}
             title='NET'
             usedValue={0}
             maxValue={100}
@@ -57,6 +67,8 @@ const Resources = ({ userInfo }) => {
         </Grid>
         <Grid item xs={12} className={classes.dataFeedback}>
           <DataFeedback
+            showStaked
+            stakedValue={total_resources}
             title='CPU'
             usedValue={5}
             maxValue={100}
@@ -72,7 +84,7 @@ const Resources = ({ userInfo }) => {
             maxValue={ram_quota}
             unit='KB'
             progressBarColor='secondary'
-            progessValue={44}
+            progessValue={calculatePercentage(ram_usage, ram_quota)}
           />
         </Grid>
       </Grid>
