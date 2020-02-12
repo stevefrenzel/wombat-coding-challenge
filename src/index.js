@@ -4,4 +4,20 @@ import ReactDOM from 'react-dom';
 // COMPONENTS
 import App from './App';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// MATERIAL UI - CORE
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark'
+  }
+});
+
+ReactDOM.render(
+  <MuiThemeProvider theme={theme}>
+    <CssBaseline />
+    <App />
+  </MuiThemeProvider>,
+  document.getElementById('root')
+);
