@@ -6,26 +6,17 @@ import Typography from './Typography';
 
 // MATERIAL UI - CORE
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => ({
-  container: {
-    padding: theme.spacing(0, 2, 0, 2),
-    backgroundColor: 'lightgrey',
-    margin: 0
-  }
-}));
-
-const Resources = ({ title, usedValue, maxValue, unit, progessValue }) => {
-  const classes = useStyles();
-
+const Resources = ({
+  title,
+  usedValue,
+  maxValue,
+  unit,
+  progessValue,
+  progressBarColor
+}) => {
   return (
-    <Grid
-      container
-      justify='center'
-      alignItems='center'
-      className={classes.container}
-    >
+    <Grid container justify='center' alignItems='center'>
       <Grid item xs={2}>
         <Typography content={title} variant='subtitle1' />
       </Grid>
@@ -39,7 +30,11 @@ const Resources = ({ title, usedValue, maxValue, unit, progessValue }) => {
         <Typography content={`${progessValue}%`} variant='caption' />
       </Grid>
       <Grid item xs={10}>
-        <ProgressBar value={progessValue} variant='determinate' />
+        <ProgressBar
+          value={progessValue}
+          color={progressBarColor}
+          variant='determinate'
+        />
       </Grid>
     </Grid>
   );
