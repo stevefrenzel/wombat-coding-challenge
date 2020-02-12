@@ -1,38 +1,64 @@
 import React from 'react';
 
+// UTILS
+import DataFeedback from './utils/DataFeedback';
+
 // MATERIAL UI - CORE
-// import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
-// MATERIAL UI - ICONS
-
-// const useStyles = makeStyles(theme => ({}));
+const useStyles = makeStyles(theme => ({
+  container: {
+    width: '100vw'
+  },
+  gridItem: {
+    margin: 0,
+    padding: 0,
+    border: '1px solid black'
+  }
+}));
 
 const Resources = ({ userInfo }) => {
-  // const classes = useStyles();
-
-  const {
-    core_liquid_balance,
-    cpu_limit,
-    net_limit,
-    ram_usage,
-    ram_quota
-  } = userInfo;
+  const classes = useStyles();
+  const { cpu_limit, net_limit, ram_usage, ram_quota } = userInfo;
 
   // DISPLAY THIS DATA:
-  // the EOS token balance √
-  // the value in USD
   // the staked resources for CPU and NET as well as the current consumption
   // the RAM consumption √
 
   return (
-    <>
-      <Typography>EOS token balance: {core_liquid_balance}</Typography>
-      {/* <Typography>NET consumption: {cpu_limit}</Typography> */}
-      {/* <Typography>NET consumption: {net_limit}</Typography> */}
-      <Typography>RAM usage: {ram_usage}</Typography>
-      <Typography>RAM quota: {ram_quota}</Typography>
-    </>
+    <Paper>
+      <Grid container className={classes.container}>
+        <Grid item xs={12}>
+          <DataFeedback
+            title='NET'
+            usedValue={0}
+            maxValue={100}
+            unit='KB'
+            progessValue={50}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <DataFeedback
+            title='CPU'
+            usedValue={5}
+            maxValue={100}
+            unit='ms'
+            progessValue={18}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <DataFeedback
+            title='RAM'
+            usedValue={50}
+            maxValue={1000}
+            unit='KB'
+            progessValue={44}
+          />
+        </Grid>
+      </Grid>
+    </Paper>
   );
 };
 
