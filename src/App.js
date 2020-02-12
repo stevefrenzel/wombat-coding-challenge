@@ -11,6 +11,7 @@ import BottomAppBar from './components/utils/BottomAppBar';
 // MATERIAL UI - CORE
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
+import Skeleton from '@material-ui/lab/Skeleton';
 
 const useStyles = makeStyles(theme => ({
   gridItem: {
@@ -49,20 +50,42 @@ const App = () => {
 
   return (
     <Grid container justify='center' align='center'>
-      <Grid item xs={12}>
-        <Typography
-          content={`Welcome, ${account_name}.`}
-          variant='h5'
-          className={classes.heading}
-        />
+      <Grid item xs={6} className={classes.gridItem}>
+        {userInfo ? (
+          <Typography
+            content={`Welcome, ${account_name}.`}
+            variant='h5'
+            className={classes.heading}
+          />
+        ) : (
+          <Skeleton variant='text' animation='wave' />
+        )}
       </Grid>
-      <Grid item xs={12} sm={8} md={3} className={classes.gridItem}>
-        <Actions userInfo={userInfo} />
+      <Grid item xs={12} sm={6} className={classes.gridItem}>
+        {userInfo ? (
+          <Actions userInfo={userInfo} />
+        ) : (
+          <Skeleton
+            variant='rect'
+            width='auto'
+            height='200px'
+            animation='wave'
+          />
+        )}
       </Grid>
-      <Grid item xs={12} sm={8} md={3} className={classes.gridItem}>
-        <Resources userInfo={userInfo} />
+      <Grid item xs={12} sm={6} className={classes.gridItem}>
+        {userInfo ? (
+          <Resources userInfo={userInfo} />
+        ) : (
+          <Skeleton
+            variant='rect'
+            width='auto'
+            height='200px'
+            animation='wave'
+          />
+        )}
       </Grid>
-      <BottomAppBar />
+      {userInfo ? <BottomAppBar /> : null}
     </Grid>
   );
 };
