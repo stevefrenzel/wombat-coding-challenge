@@ -14,18 +14,20 @@ import { makeStyles } from '@material-ui/core/styles';
 import Skeleton from '@material-ui/lab/Skeleton';
 
 const useStyles = makeStyles(theme => ({
+  container: {
+    margin: theme.spacing(0, 0, 7, 0)
+  },
   gridItem: {
     margin: theme.spacing(2)
   },
   heading: {
-    marginTop: theme.spacing(2)
+    marginTop: theme.spacing(1)
   }
 }));
 
 const App = () => {
   const classes = useStyles();
   const [userInfo, setUserInfo] = useState([]);
-  const { account_name } = userInfo;
 
   useEffect(() => {
     async function fetchData() {
@@ -49,18 +51,12 @@ const App = () => {
   }, []);
 
   return (
-    <Grid container justify='center' align='center'>
-      <Grid item xs={6} className={classes.gridItem}>
-        {userInfo ? (
-          <Typography
-            content={`Welcome, ${account_name}.`}
-            variant='h5'
-            className={classes.heading}
-          />
-        ) : (
-          <Skeleton variant='text' animation='wave' />
-        )}
-      </Grid>
+    <Grid
+      container
+      justify='center'
+      align='center'
+      className={classes.container}
+    >
       <Grid item xs={12} sm={6} className={classes.gridItem}>
         {userInfo ? (
           <Actions userInfo={userInfo} />
