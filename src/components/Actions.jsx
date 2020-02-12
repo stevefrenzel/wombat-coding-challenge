@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2)
   },
   divider: {
-    margin: theme.spacing(1)
+    marginBottom: theme.spacing(1)
   },
   buttonGroup: {
     marginTop: theme.spacing(2)
@@ -51,12 +51,12 @@ const Actions = ({ userInfo }) => {
         className={classes.container}
       >
         <Grid item>
-          <Typography content='Current Balance' variant='h5' />
+          <Typography content='Current Balance' variant='h6' />
           <Divider className={classes.divider} />
         </Grid>
         <Grid item>
-          <Typography content={core_liquid_balance} variant='h6' />
-          <Typography content='USD' variant='subtitle1' />
+          <Typography content={core_liquid_balance} variant='body1' />
+          <Typography content='USD' variant='body2' />
         </Grid>
         <Grid item className={classes.buttonGroup}>
           <Button
