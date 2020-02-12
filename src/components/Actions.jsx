@@ -25,8 +25,8 @@ const useStyles = makeStyles(theme => ({
   buttonGroup: {
     marginTop: theme.spacing(2)
   },
-  marginRight: {
-    marginRight: theme.spacing(1)
+  margin: {
+    margin: theme.spacing(1)
   },
   button: {
     width: '90px'
@@ -58,14 +58,14 @@ const Actions = ({ userInfo }) => {
           <Typography content={core_liquid_balance} variant='body1' />
           <Typography content='USD' variant='body2' />
         </Grid>
-        <Grid item className={classes.buttonGroup}>
+        <Grid item xs={8} sm={12} className={classes.buttonGroup}>
           <Button
             content='buy'
             variant='contained'
             size='small'
             startIcon={<ShoppingCartSharpIcon />}
             onClick={handleClick}
-            className={`${classes.button} ${classes.marginRight}`}
+            className={`${classes.button} ${classes.margin}`}
           />
           <Button
             content='send'
@@ -73,13 +73,13 @@ const Actions = ({ userInfo }) => {
             size='small'
             startIcon={<SendSharpIcon />}
             onClick={handleClick}
-            className={`${classes.button} ${classes.marginRight}`}
+            className={`${classes.button} ${classes.margin}`}
           />
           <Button
             content='receive'
             variant='contained'
             size='small'
-            className={classes.button}
+            className={`${classes.button} ${classes.margin}`}
             startIcon={<CallReceivedSharpIcon />}
             onClick={handleClick}
           />
