@@ -13,12 +13,14 @@ const Resources = ({
   maxValue,
   unit,
   progessValue,
-  progressBarColor
+  progressBarColor,
+  stakedValue,
+  showStaked
 }) => {
   return (
     <Grid container justify='center' alignItems='center'>
       <Grid item xs={2}>
-        <Typography content={title} variant='subtitle1' />
+        <Typography content={title} variant='subtitle2' />
       </Grid>
       <Grid item xs={10}>
         <Typography
@@ -35,6 +37,9 @@ const Resources = ({
           color={progressBarColor}
           variant='determinate'
         />
+        {showStaked ? (
+          <Typography content={`Staked: ${stakedValue}`} variant='caption' />
+        ) : null}
       </Grid>
     </Grid>
   );
