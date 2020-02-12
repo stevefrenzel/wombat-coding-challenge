@@ -63,16 +63,19 @@ const Actions = ({ userInfo }) => {
             content='buy'
             startIcon={<ShoppingCartSharpIcon />}
             onClick={handleClick}
+            size='small'
           />
           <Button
             content='send'
             startIcon={<SendSharpIcon />}
             onClick={handleClick}
+            size='small'
           />
           <Button
             content='receive'
             startIcon={<CallReceivedSharpIcon />}
             onClick={handleClick}
+            size='small'
           />
         </Grid>
       </Grid>
