@@ -26,28 +26,26 @@ const App = () => {
   const [userInfo, setUserInfo] = useState([]);
   const { account_name } = userInfo;
 
-  const bodyData = {
-    account_name: 'genialwombat'
-  };
-
   useEffect(() => {
     async function fetchData() {
       await fetch('https://api.main.alohaeos.com:443/v1/chain/get_account', {
         method: 'post',
-        body: JSON.stringify(bodyData)
+        body: JSON.stringify({
+          account_name: 'genialwombat'
+        })
       })
-        .then(function(response) {
+        .then(response => {
           return response.json();
         })
-        .then(function(data) {
+        .then(data => {
           setUserInfo(data);
+        })
+        .catch(error => {
+          console.log('ERROR: ', error);
         });
     }
     fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  console.log('USER INFO: ', userInfo);
 
   return (
     <Grid container justify='center' align='center'>
@@ -58,10 +56,10 @@ const App = () => {
           className={classes.heading}
         />
       </Grid>
-      <Grid item xs={12} className={classes.gridItem}>
+      <Grid item xs={12} sm={8} md={3} className={classes.gridItem}>
         <Actions userInfo={userInfo} />
       </Grid>
-      <Grid item xs={12} className={classes.gridItem}>
+      <Grid item xs={12} sm={8} md={3} className={classes.gridItem}>
         <Resources userInfo={userInfo} />
       </Grid>
       <BottomAppBar />
