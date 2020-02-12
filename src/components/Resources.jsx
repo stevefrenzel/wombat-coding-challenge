@@ -26,6 +26,9 @@ const Resources = ({ userInfo }) => {
   const classes = useStyles();
   const { cpu_limit, net_limit, ram_usage, ram_quota } = userInfo;
 
+  console.log('RAM USAGE: ', ram_usage);
+  console.log('RAM USAGE: ', ram_quota);
+
   // DISPLAY THIS DATA:
   // the staked resources for CPU and NET as well as the current consumption
   // the RAM consumption √
@@ -65,8 +68,8 @@ const Resources = ({ userInfo }) => {
         <Grid item xs={12}>
           <DataFeedback
             title='RAM'
-            usedValue={50}
-            maxValue={1000}
+            usedValue={ram_usage}
+            maxValue={ram_quota}
             unit='KB'
             progressBarColor='secondary'
             progessValue={44}
