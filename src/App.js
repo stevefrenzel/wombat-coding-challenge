@@ -1,14 +1,24 @@
 import React, { useEffect, useState } from 'react';
 
 // COMPONENTS
-import BottomAppBar from './components/BottomAppBar';
+import Actions from './components/Actions';
 import Resources from './components/Resources';
-// import DataFeedback from './components/DataFeedback';
+
+// UTILS
+import BottomAppBar from './components/utils/BottomAppBar';
 
 // MATERIAL UI - CORE
-import CssBaseline from '@material-ui/core/CssBaseline';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  gridItem: {
+    margin: theme.spacing(2)
+  }
+}));
 
 const App = () => {
+  const classes = useStyles();
   const [userInfo, setUserInfo] = useState([]);
 
   const bodyData = {
@@ -35,11 +45,15 @@ const App = () => {
   console.log('USER INFO: ', userInfo);
 
   return (
-    <>
-      <CssBaseline />
-      <Resources userInfo={userInfo} />
+    <Grid container justify='center'>
+      <Grid item xs={12} className={classes.gridItem}>
+        <Actions userInfo={userInfo} />
+      </Grid>
+      <Grid item xs={12} className={classes.gridItem}>
+        <Resources userInfo={userInfo} />
+      </Grid>
       <BottomAppBar />
-    </>
+    </Grid>
   );
 };
 
