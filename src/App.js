@@ -15,7 +15,7 @@ import Skeleton from '@material-ui/lab/Skeleton';
 
 const useStyles = makeStyles(theme => ({
   container: {
-    margin: theme.spacing(0, 0, 7, 0)
+    margin: theme.spacing(0, 0, 8, 0)
   },
   gridItem: {
     margin: theme.spacing(2)
