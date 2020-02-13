@@ -18,7 +18,7 @@ On the next page you can see the wallet view from the Wombat Android application
 - [EOSIO API Reference](https://developers.eos.io/manuals/eos/latest/nodeos/plugins/chain_api_plugin/api-reference/index)
 - [EOSIO API Endpoint](https://www.eosdocs.io/resources/apiendpoints/)
 
-![Wombat Reference](/reference.jpg)
+<img src="./reference.jpg" alt="Wombat Reference" width="75%" height="auto">
 
 ## 2. Execution 💥
 
