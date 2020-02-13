@@ -31,12 +31,12 @@ const Actions = ({ userInfo, handleClick }) => {
   const classes = useStyles();
   const { core_liquid_balance } = userInfo;
 
-  const stringToNumber = string => {
-    let numbersOnly = string.replace(/\D/g, '');
-    return Number(numbersOnly);
+  const convertEosToUsd = string => {
+    let noLetters = string.replace(/[^0-9.,]+/, '');
+    let decimalNumber = Number(noLetters);
+    let usDollar = decimalNumber * 5.26;
+    return usDollar.toFixed(2);
   };
-
-  console.log(stringToNumber(core_liquid_balance));
 
   return (
     <Paper>
@@ -53,7 +53,10 @@ const Actions = ({ userInfo, handleClick }) => {
         </Grid>
         <Grid item>
           <Typography content={core_liquid_balance} variant='body1' />
-          <Typography content={`USD`} variant='body2' />
+          <Typography
+            content={`≈ ${convertEosToUsd(core_liquid_balance)} $`}
+            variant='body2'
+          />
         </Grid>
         <Grid item xs={12} className={classes.buttonGroup}>
           <Button
