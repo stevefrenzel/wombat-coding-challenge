@@ -33,13 +33,16 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const handleClick = () => {
-  console.log('BUTTON CLICKED!');
-};
-
-const Actions = ({ userInfo }) => {
+const Actions = ({ userInfo, handleClick }) => {
   const classes = useStyles();
   const { core_liquid_balance } = userInfo;
+
+  const stringToNumber = string => {
+    let numbersOnly = string.replace(/\D/g, '');
+    return Number(numbersOnly);
+  };
+
+  console.log(core_liquid_balance);
 
   return (
     <Paper>
@@ -55,8 +58,11 @@ const Actions = ({ userInfo }) => {
           <Divider className={classes.divider} />
         </Grid>
         <Grid item>
-          <Typography content={core_liquid_balance} variant='body1' />
-          <Typography content='USD' variant='body2' />
+          <Typography
+            content={`${stringToNumber(core_liquid_balance)} EOS`}
+            variant='body1'
+          />
+          <Typography content={`USD`} variant='body2' />
         </Grid>
         <Grid item xs={12} className={classes.buttonGroup}>
           <Button
@@ -84,8 +90,3 @@ const Actions = ({ userInfo }) => {
 };
 
 export default Actions;
-
-// DISPLAY THIS DATA:
-
-// the EOS token balance √
-// the value in USD
