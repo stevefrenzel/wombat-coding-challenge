@@ -49,9 +49,6 @@ const Resources = ({ userInfo }) => {
           <Typography content='Resources' variant='h6' />
           <Divider className={classes.divider} />
         </Grid>
-        <Grid item xs={12}>
-          <Typography content={`Staked Total:`} variant='body2' align='left' />
-        </Grid>
         <Grid item xs={12} className={classes.dataFeedback}>
           <DataFeedback
             showStaked
