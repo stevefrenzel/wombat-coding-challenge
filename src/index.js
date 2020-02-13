@@ -21,3 +21,5 @@ ReactDOM.render(
   </MuiThemeProvider>,
   document.getElementById('root')
 );
+
+console.log('Coded with ♥️ by Steve Frenzel');
