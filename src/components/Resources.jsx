@@ -37,10 +37,6 @@ const Resources = ({ userInfo }) => {
     return Number(number.toFixed());
   };
 
-  // const decimalConverter = x => {
-  //   return Number(x.toFixed());
-  // };
-
   return (
     <Paper>
       <Grid
@@ -52,6 +48,9 @@ const Resources = ({ userInfo }) => {
         <Grid item>
           <Typography content='Resources' variant='h6' />
           <Divider className={classes.divider} />
+        </Grid>
+        <Grid item xs={12}>
+          <Typography content={`Staked Total:`} variant='body2' align='left' />
         </Grid>
         <Grid item xs={12} className={classes.dataFeedback}>
           <DataFeedback
