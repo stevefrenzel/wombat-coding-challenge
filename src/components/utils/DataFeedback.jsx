@@ -38,7 +38,7 @@ const Resources = ({
           variant='determinate'
         />
         {showStaked ? (
-          <Typography content={`Staked: ${stakedValue}`} variant='caption' />
+          <Typography content={stakedValue} variant='caption' />
         ) : null}
       </Grid>
     </Grid>
