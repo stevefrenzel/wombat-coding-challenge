@@ -31,11 +31,11 @@ As a design system I used [Material UI](https://material-ui.com/) and made the c
 1. `ProgressBar.jsx`
 1. `Typography.jsx`
 
-### `Actions.jsx`
+### 2.1 `Actions.jsx`
 
 ###### WORK IN PROGRESS
 
-### `Resources.jsx`
+### 2.2 `Resources.jsx`
 
 This component displays various data, so I applied object destructuring to `userInfo` for better readability:
 
@@ -77,7 +77,7 @@ To avoid repeating myself in the `dataFeedback.jsx` component, I calculate the v
 
 If necessary, I include the boolean `showStaked` if `stakedValue` should be displayed.
 
-### `BottomAppBar.jsx`
+### 2.3 `BottomAppBar.jsx`
 
 Apart from the color, I have been able to reproduce this component pretty much exactly as the reference. The only logic here is a dummy clickhandler, which is located in 'App.js`.
 
