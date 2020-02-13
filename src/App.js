@@ -3,9 +3,7 @@ import React, { useEffect, useState } from 'react';
 // COMPONENTS
 import Actions from './components/Actions';
 import Resources from './components/Resources';
-
-// UTILS
-import BottomAppBar from './components/utils/BottomAppBar';
+import BottomAppBar from './components/BottomAppBar';
 
 // MATERIAL UI - CORE
 import Grid from '@material-ui/core/Grid';
