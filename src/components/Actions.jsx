@@ -1,19 +1,19 @@
 import React from 'react';
 
-// UTILS
-import Button from './utils/Button';
-import Typography from './utils/Typography';
-
 // MATERIAL UI - CORE
-import { makeStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 
 // MATERIAL UI - ICONS
-import ShoppingCartSharpIcon from '@material-ui/icons/ShoppingCartSharp';
 import SendSharpIcon from '@material-ui/icons/SendSharp';
+import ShoppingCartSharpIcon from '@material-ui/icons/ShoppingCartSharp';
 import CallReceivedSharpIcon from '@material-ui/icons/CallReceivedSharp';
+
+// UTILS
+import Button from './utils/Button';
+import Typography from './utils/Typography';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -24,12 +24,6 @@ const useStyles = makeStyles(theme => ({
   },
   buttonGroup: {
     marginTop: theme.spacing(2)
-  },
-  margin: {
-    margin: theme.spacing(1)
-  },
-  button: {
-    width: '110px'
   }
 }));
 
@@ -42,7 +36,7 @@ const Actions = ({ userInfo, handleClick }) => {
     return Number(numbersOnly);
   };
 
-  console.log(core_liquid_balance);
+  console.log(stringToNumber(core_liquid_balance));
 
   return (
     <Paper>
@@ -58,10 +52,7 @@ const Actions = ({ userInfo, handleClick }) => {
           <Divider className={classes.divider} />
         </Grid>
         <Grid item>
-          <Typography
-            content={`${stringToNumber(core_liquid_balance)} EOS`}
-            variant='body1'
-          />
+          <Typography content={core_liquid_balance} variant='body1' />
           <Typography content={`USD`} variant='body2' />
         </Grid>
         <Grid item xs={12} className={classes.buttonGroup}>
