@@ -32,13 +32,13 @@ const Resources = ({ userInfo }) => {
     ram_quota
   } = userInfo;
 
-  const calculatePercentage = (firstValue, secondValue) => {
-    let number = (firstValue / secondValue) * 100;
+  const calculatePercentage = (x, y) => {
+    let number = (x / y) * 100;
     return Number(number.toFixed());
   };
 
-  // const decimalConverter = value => {
-  //   return Number(value.toFixed(2));
+  // const decimalConverter = x => {
+  //   return Number(x.toFixed());
   // };
 
   return (
@@ -56,25 +56,31 @@ const Resources = ({ userInfo }) => {
         <Grid item xs={12} className={classes.dataFeedback}>
           <DataFeedback
             showStaked
-            stakedValue={total_resources}
+            stakedValue={total_resources.net_weight}
             title='NET'
-            usedValue={0}
-            maxValue={100}
+            usedValue={net_limit.used}
+            maxValue={net_limit.available}
             unit='KB'
             progressBarColor='secondary'
-            progessValue={50}
+            progessValue={calculatePercentage(
+              net_limit.used,
+              net_limit.available
+            )}
           />
         </Grid>
         <Grid item xs={12} className={classes.dataFeedback}>
           <DataFeedback
             showStaked
-            stakedValue={total_resources}
+            stakedValue={total_resources.cpu_weight}
             title='CPU'
-            usedValue={5}
-            maxValue={100}
+            usedValue={cpu_limit.used}
+            maxValue={cpu_limit.available}
             unit='ms'
             progressBarColor='secondary'
-            progessValue={18}
+            progessValue={calculatePercentage(
+              cpu_limit.used,
+              cpu_limit.available
+            )}
           />
         </Grid>
         <Grid item xs={12}>
