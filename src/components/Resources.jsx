@@ -1,14 +1,14 @@
 import React from 'react';
 
+// MATERIAL UI - CORE
+import Divider from '@material-ui/core/Divider';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+
 // UTILS
 import DataFeedback from './utils/DataFeedback';
 import Typography from './utils/Typography';
-
-// MATERIAL UI - CORE
-import { makeStyles } from '@material-ui/core/styles';
-import Divider from '@material-ui/core/Divider';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles(theme => ({
   container: {
