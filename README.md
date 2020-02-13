@@ -1,68 +1,86 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Wombat Coding Challenge 🐻
 
-## Available Scripts
+## 1. Task 📝
 
-In the project directory, you can run:
+Write a web frontend (ideally using ReactJS), that displays the following information for an arbitrary EOS account:
 
-### `npm start`
+1. the EOS token balance
+2. the value in USD
+3. the staked resources for CPU and NET as well as the current consumption
+4. the RAM consumption
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Please publish your code on GitHub and add some documentation. The code should also be tested. Try to solve the challenge without using any 3rd party libraries.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+On the next page you can see the wallet view from the Wombat Android application, which you may use as a reference.
 
-### `npm test`
+![Wombat Reference](/reference.jpg)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 2. Execution 💥
 
-### `npm run build`
+First I created the structure using the reference. In this case the app consists of three main components:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. `Actions.jsx`
+2. `Resources.jsx`
+3. `BottomAppBar.jsx`
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+As a design system I used [Material UI](https://material-ui.com/) and made the components reusable:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. `Button.jsx`
+1. `DataFeedBack.jsx`
+1. `IconButton.jsx`
+1. `ProgressBar.jsx`
+1. `Typography.jsx`
 
-### `npm run eject`
+### `Actions.jsx`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+###### WORK IN PROGRESS
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `Resources.jsx`
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+This component displays various data, so I applied object destructuring to `userInfo` for better readability:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```javascript
+const {
+  cpu_limit,
+  net_limit,
+  total_resources,
+  ram_usage,
+  ram_quota
+} = userInfo;
+```
 
-## Learn More
+These objects in turn I distribute to the respective `dataFeedback.jsx` components. To make sure that the percentage and `ProgressBar.jsx` are displayed correctly, I calculate it by using a function before passing it on as a property:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```javascript
+const calculatePercentage = (x, y) => {
+  let number = (x / y) * 100;
+  return Number(number.toFixed());
+};
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To avoid repeating myself in the `dataFeedback.jsx` component, I calculate the value inside the `progressValue` property, since it is used twice here:
 
-### Code Splitting
+```javascript
+<Grid item xs={12} className={classes.dataFeedback}>
+  <DataFeedback
+    showStaked
+    stakedValue={total_resources.net_weight}
+    title='NET'
+    usedValue={net_limit.used}
+    maxValue={net_limit.available}
+    unit='KB'
+    progressBarColor='secondary'
+    progessValue={calculatePercentage(net_limit.used, net_limit.available)}
+  />
+</Grid>
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+If necessary, I include the boolean `showStaked` if `stakedValue` should be displayed.
 
-### Analyzing the Bundle Size
+### `BottomAppBar.jsx`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Apart from the color, I have been able to reproduce this component pretty much exactly as the reference. The only logic here is a dummy clickhandler, which is located in 'App.js`.
 
-### Making a Progressive Web App
+## 3. Conclusion 🤔
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+###### WORK IN PROGRESS
