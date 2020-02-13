@@ -47,8 +47,6 @@ const App = () => {
     fetchData();
   }, []);
 
-  console.log(userInfo);
-
   const handleClick = () => {
     console.log('BUTTON CLICKED!');
   };
