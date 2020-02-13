@@ -34,7 +34,7 @@ const BottomAppBar = ({ handleClick }) => {
   const classes = useStyles();
 
   return (
-    <AppBar position='fixed' className={classes.appBar}>
+    <AppBar position='fixed' className={classes.appBar} color='secondary'>
       <Toolbar className={classes.toolbar}>
         <div className={classes.icon} onClick={handleClick}>
           <IconButton icon={<SettingsSharpIcon />} />
