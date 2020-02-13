@@ -1,11 +1,11 @@
 import React from 'react';
 
+// MATERIAL UI - CORE
+import Grid from '@material-ui/core/Grid';
+
 // UTILS
 import ProgressBar from './ProgressBar';
 import Typography from './Typography';
-
-// MATERIAL UI - CORE
-import Grid from '@material-ui/core/Grid';
 
 const Resources = ({
   title,
