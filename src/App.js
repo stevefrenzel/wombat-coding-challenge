@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 // COMPONENTS
 import Actions from './components/Actions';
 import Resources from './components/Resources';
-import Typography from './components/utils/Typography';
 
 // UTILS
 import BottomAppBar from './components/utils/BottomAppBar';
@@ -27,7 +26,7 @@ const useStyles = makeStyles(theme => ({
 
 const App = () => {
   const classes = useStyles();
-  const [userInfo, setUserInfo] = useState([]);
+  const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -50,6 +49,12 @@ const App = () => {
     fetchData();
   }, []);
 
+  console.log(userInfo);
+
+  const handleClick = () => {
+    console.log('BUTTON CLICKED!');
+  };
+
   return (
     <Grid
       container
@@ -59,7 +64,7 @@ const App = () => {
     >
       <Grid item xs={12} sm={6} className={classes.gridItem}>
         {userInfo ? (
-          <Actions userInfo={userInfo} />
+          <Actions userInfo={userInfo} handleClick={handleClick} />
         ) : (
           <Skeleton
             variant='rect'
@@ -71,7 +76,7 @@ const App = () => {
       </Grid>
       <Grid item xs={12} sm={6} className={classes.gridItem}>
         {userInfo ? (
-          <Resources userInfo={userInfo} />
+          <Resources userInfo={userInfo} handleClick={handleClick} />
         ) : (
           <Skeleton
             variant='rect'
@@ -81,7 +86,7 @@ const App = () => {
           />
         )}
       </Grid>
-      {userInfo ? <BottomAppBar /> : null}
+      {userInfo ? <BottomAppBar handleClick={handleClick} /> : null}
     </Grid>
   );
 };
