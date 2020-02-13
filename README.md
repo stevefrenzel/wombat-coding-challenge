@@ -13,6 +13,11 @@ Please publish your code on GitHub and add some documentation. The code should a
 
 On the next page you can see the wallet view from the Wombat Android application, which you may use as a reference.
 
+#### References
+
+- [EOSIO API Reference](https://developers.eos.io/manuals/eos/latest/nodeos/plugins/chain_api_plugin/api-reference/index)
+- [EOSIO API Endpoint](https://www.eosdocs.io/resources/apiendpoints/)
+
 ![Wombat Reference](/reference.jpg)
 
 ## 2. Execution 💥
@@ -48,7 +53,7 @@ const convertEosToUsd = string => {
 
 ### 2.2 `Resources.jsx`
 
-This component displays various data, so I applied object destructuring to `userInfo` for better readability:
+This component displays various data, so I applied object destructuring to `{userInfo}` for better readability:
 
 ```javascript
 const {
@@ -60,7 +65,7 @@ const {
 } = userInfo;
 ```
 
-These objects in turn I distribute to the respective `dataFeedback.jsx` components. To make sure that the percentage and `ProgressBar.jsx` are displayed correctly, I calculate it by using a function before passing it on as a property:
+These objects are being distributed to the respective `dataFeedback.jsx` components. To make sure that the percentage and `ProgressBar.jsx` are displayed correctly, I calculate it by using a function before passing it on as a property:
 
 ```javascript
 const calculatePercentage = (x, y) => {
@@ -92,6 +97,16 @@ If necessary, I include the boolean `showStaked` if `stakedValue` should be disp
 
 Apart from the color, I have been able to reproduce this component pretty much exactly as the reference. The only logic here is a dummy clickhandler, which is located in 'App.js`.
 
-## 3. Conclusion 🤔
+## 3. Thoughts 🤔
 
-###### WORK IN PROGRESS
+At first I was very intimidated by this coding challenge, as I'm not very familiar with the blockchain topic and the API documentation overwhelmed me at first. But after I had read it and I knew from which endpoint I could get my data, I made good progress.
+
+The biggest problem for me during the development was that I could not go one level deeper in `{userInfo}` without the program crashing. Access to `{cpu_limit.used}` for example was not possible. The error source was in `App.js':
+
+```javascript
+const [userInfo, setUserInfo] = useState([]);
+```
+
+After changing the initial value to `null`, I had complete access to the API endpoint. I can't explain exactly why this change solved the problem, but an empty array is truthy in the boolean context, while `null` is falsy.
+
+I really enjoyed this coding challenge, as it included a bit of everything. Especially the conversion from EOS to USD was a very entertaining challenge.
