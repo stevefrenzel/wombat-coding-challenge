@@ -23,7 +23,7 @@ First I created the structure using the reference. In this case the app consists
 2. `Resources.jsx`
 3. `BottomAppBar.jsx`
 
-As a design system I used [Material UI](https://material-ui.com/) and made the components reusable:
+I used [Material UI](https://material-ui.com/) as a design system and made the components reusable:
 
 1. `Button.jsx`
 1. `DataFeedBack.jsx`
@@ -33,7 +33,18 @@ As a design system I used [Material UI](https://material-ui.com/) and made the c
 
 ### 2.1 `Actions.jsx`
 
-###### WORK IN PROGRESS
+A relatively simple component, but it required a somewhat more elaborate logic to display the currencies correctly. To display the EOS token balance I just pass the `{core_liquid_balance}` object as property.
+
+To display this value in USD, I had to remove the letters and the white space first. Next I converted this string to a number primitive and multiplied it by 5.26. In the return statement this value is displayed with two decimal places.
+
+```javascript
+const convertEosToUsd = string => {
+  let noLetters = string.replace(/[^0-9.,]+/, '');
+  let decimalNumber = Number(noLetters);
+  let usDollar = decimalNumber * 5.26;
+  return usDollar.toFixed(2);
+};
+```
 
 ### 2.2 `Resources.jsx`
 
