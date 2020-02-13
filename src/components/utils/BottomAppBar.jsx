@@ -25,29 +25,30 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'space-between'
   },
   icon: {
-    textAlign: 'center'
+    textAlign: 'center',
+    cursor: 'pointer'
   }
 }));
 
-const BottomAppBar = () => {
+const BottomAppBar = ({ handleClick }) => {
   const classes = useStyles();
 
   return (
     <AppBar position='fixed' className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
-        <div className={classes.icon}>
+        <div className={classes.icon} onClick={handleClick}>
           <IconButton icon={<SettingsSharpIcon />} />
           <Typography variant='subtitle2' content='Settings' />
         </div>
-        <div className={classes.icon}>
+        <div className={classes.icon} onClick={handleClick}>
           <IconButton icon={<AccountBalanceWalletSharpIcon />} />
           <Typography variant='subtitle2' content='Wallet' />
         </div>
-        <div className={classes.icon}>
+        <div className={classes.icon} onClick={handleClick}>
           <IconButton icon={<HomeSharpIcon />} />
           <Typography variant='subtitle2' content='Home' />
         </div>
-        <div className={classes.icon}>
+        <div className={classes.icon} onClick={handleClick}>
           <IconButton icon={<ExploreSharpIcon />} />
           <Typography variant='subtitle2' content='Explorer' />
         </div>
